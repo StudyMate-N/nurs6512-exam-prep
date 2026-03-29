@@ -1,0 +1,96 @@
+export interface BodySystem {
+  id: string;
+  name: string;
+  points: string;
+  inspect: string;
+  verbalize: string;
+  specialNote?: string;
+}
+
+export const bodySystems: BodySystem[] = [
+  {
+    id: 'skin',
+    name: 'Skin',
+    points: '2 pts',
+    inspect:
+      'All body surfaces systematically, especially feet. Check for lesions, color changes (pallor, erythema, jaundice, cyanosis), rashes, turgor, moisture, temperature. Inspect nails for clubbing, cyanosis, capillary refill.',
+    verbalize:
+      '"Inspecting skin from head to toe — noting color, texture, moisture, and lesions. Checking feet especially for breakdown or ulceration. Skin is warm, dry, intact. No rashes, lesions, or areas of breakdown noted. Nails without clubbing or cyanosis."',
+  },
+  {
+    id: 'head-neck',
+    name: 'Head & Neck',
+    points: '6 pts',
+    inspect:
+      'Skull (shape, tenderness), facial symmetry. Lymph nodes — full cervical chain: preauricular, postauricular, occipital, submandibular, submental, anterior cervical, posterior cervical, supraclavicular. Thyroid — ask patient to swallow water while palpating. Tracheal midline placement.',
+    verbalize:
+      '"Inspecting and palpating skull — normocephalic, atraumatic, no tenderness. Palpating cervical lymph nodes systematically — no adenopathy. Palpating thyroid — please take a sip of water and swallow. Thyroid — no enlargement, no nodules. Trachea midline, no deviation."',
+  },
+  {
+    id: 'eyes',
+    name: 'Eyes',
+    points: '12 pts',
+    inspect:
+      'Visual acuity (Snellen chart — each eye separately). Peripheral visual fields (confrontation test — each quadrant). Extraocular movements (H-pattern — 6 cardinal positions of gaze). Conjunctiva and sclera (pull down lower lid). Pupillary reaction (PERRLA — direct AND consensual). Ophthalmoscopic exam: disc margins, cup-to-disc ratio, AV nicking, hemorrhages, microaneurysms, neovascularization, macula.',
+    verbalize:
+      '"Testing visual acuity — 20/20 bilateral. Visual fields intact by confrontation. EOMs intact, no nystagmus. Conjunctiva pink, no pallor. Pupils equal, round, reactive to light — PERRLA, direct and consensual intact. Ophthalmoscopic exam: sharp disc margin, cup-to-disc ratio 0.3, no AV nicking, no hemorrhages, no microaneurysms, no neovascularization."',
+  },
+  {
+    id: 'ears-nose',
+    name: 'Ears, Nose, Sinuses & Mouth',
+    points: '8 pts',
+    inspect:
+      'Gross hearing — whisper test at 2 feet, occlude opposite ear. Otoscopic exam: describe tympanic membrane (pearly gray, intact), light reflex position (5 o\'clock), bony landmarks (malleus), presence of effusion. Inspect nares for patency, mucosa, septal deviation. Palpate then percuss frontal and maxillary sinuses. Mouth: mucosa, teeth, tongue (midline), uvula (rises midline on phonation "ahh"), no lesions or exudate.',
+    verbalize:
+      '"Whisper test — patient correctly identifies bilateral. Gross hearing intact. Otoscopic exam — tympanic membrane pearly gray, intact, light reflex at 5 o\'clock, bony landmarks visible, no effusion. Nares patent bilaterally, mucosa pink. Sinuses — no tenderness to palpation or percussion. Oral mucosa moist, teeth intact, tongue midline, uvula rises midline on phonation."',
+  },
+  {
+    id: 'thorax-lungs',
+    name: 'Thorax & Lungs',
+    points: '~10 pts',
+    inspect:
+      'Posterior chest first: inspect (chest shape/symmetry, respiratory rate, pattern, use of accessory muscles), palpate (tactile fremitus — compare bilateral), percuss (systematic pattern side-to-side — resonant vs dull), auscultate (all lung fields, bilateral comparison — vesicular, bronchovesicular, bronchial sounds; listen for adventitious sounds). Repeat sequence anteriorly.',
+    verbalize:
+      '"Inspecting posterior chest — symmetric expansion, no deformities, respiratory rate regular. Palpating for tactile fremitus — symmetric bilaterally. Percussing — resonant throughout bilateral lung fields. Auscultating — clear vesicular breath sounds bilaterally, no adventitious sounds — no wheezes, crackles, or rhonchi. Anterior chest assessed — findings the same."',
+  },
+  {
+    id: 'cardiovascular',
+    name: 'Cardiovascular',
+    points: '~10 pts',
+    inspect:
+      'Inspect precordium for heaves, lifts, or visible pulsations. Palpate PMI (point of maximal impulse) at 5th ICS, midclavicular line. Auscultate all 4 valve areas with diaphragm then bell: Aortic (2nd R ICS), Pulmonic (2nd L ICS), Tricuspid (4th L ICS), Mitral (5th ICS MCL). Assess JVD (30-degree angle). Auscultate carotid arteries for bruits.',
+    verbalize:
+      '"Inspecting precordium — no heaves or lifts visible. PMI palpable at 5th ICS midclavicular line. Auscultating aortic area — S1 S2, regular rate and rhythm, no murmurs. Pulmonic area — no murmurs. Tricuspid area — no murmurs. Mitral area — no murmurs, no S3 or S4. No carotid bruits. No JVD at 30 degrees."',
+  },
+  {
+    id: 'abdomen',
+    name: 'Abdomen',
+    points: '~10 pts',
+    inspect:
+      'Inspect (contour, symmetry, skin, visible pulsations, distension). AUSCULTATE BEFORE PALPATING — bowel sounds all 4 quadrants (listen 30 seconds each), aortic and renal bruits. Percuss (tympany throughout, liver span — MCL 6-12cm, spleen). Light palpation all quadrants. Deep palpation (masses, organomegaly). Liver edge (deep palpation RUQ). Spleen. CVA tenderness bilateral.',
+    verbalize:
+      '"Inspecting abdomen — flat, symmetric, no visible pulsations. Auscultating before palpating — bowel sounds present all quadrants, no aortic or renal bruits. Percussing — tympany throughout, liver span approximately 9cm at MCL. Light palpation — no tenderness. Deep palpation — no masses, no organomegaly. CVA tenderness — none bilaterally."',
+    specialNote:
+      'CRITICAL: Always auscultate BEFORE palpating the abdomen. Palpation alters bowel sounds and invalidates findings. This is a frequently failed step — do NOT skip it.',
+  },
+  {
+    id: 'musculoskeletal',
+    name: 'Musculoskeletal',
+    points: '~8 pts',
+    inspect:
+      'Inspect and palpate all accessible joints: hands, wrists, elbows, shoulders, hips, knees, ankles, feet. Assess spinal ROM: flexion (touch toes), extension, lateral flexion bilateral, rotation bilateral. Upper extremity strength against resistance: grip, deltoid, bicep, tricep (0-5 scale). Lower extremity strength: hip flexion, knee extension/flexion, dorsiflexion, plantarflexion.',
+    verbalize:
+      '"Inspecting joints — no swelling, erythema, or deformity in any joint. Spinal ROM — flexion, extension, lateral flexion, and rotation all within normal limits. Upper extremity strength 5/5 bilaterally — grip, deltoid, bicep, tricep. Lower extremity strength 5/5 bilaterally — hip flexion, knee extension and flexion, dorsiflexion, plantarflexion."',
+  },
+  {
+    id: 'neurological',
+    name: 'Neurological',
+    points: '~20 pts',
+    inspect:
+      'Cranial nerves I-XII (all must be named by name AND number). Sensory: sharp-dull discrimination (broken tongue depressor), vibration sense (tuning fork at bony prominences — great toes, wrists), position sense. Cerebellar: Romberg test, finger-to-nose, rapid alternating movements. Deep tendon reflexes: biceps (C5-C6), triceps (C7), brachioradialis (C6), patellar (L3-L4), Achilles (S1) — rate 0-4+. Gait assessment.',
+    verbalize:
+      '"Cranial nerves I through XII assessed — all intact as previously demonstrated. Sensory: sharp-dull discrimination intact, vibration and position sense intact bilaterally. Romberg negative. Finger-to-nose smooth, no dysmetria. Rapid alternating movements intact bilaterally. DTRs 2+ throughout. Gait — steady, smooth, coordinated, no ataxia."',
+    specialNote:
+      'The 20-point Overall Approach score is heavily tied to neurological fluency. You MUST name all 12 cranial nerves by both name and number. Hesitation here costs significant points.',
+  },
+];
