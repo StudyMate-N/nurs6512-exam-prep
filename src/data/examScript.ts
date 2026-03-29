@@ -9,6 +9,7 @@ export interface ScriptSection {
   id: string;
   number: number;
   title: string;
+  keyPhrases?: string[];
   blocks: ScriptBlock[];
 }
 
@@ -39,6 +40,7 @@ export const examScript: ScriptSection[] = [
     id: 'general-survey',
     number: 2,
     title: 'General Survey',
+    keyPhrases: ['well-nourished', 'no acute distress', 'alert'],
     blocks: [
       {
         type: 'say',
@@ -62,8 +64,41 @@ export const examScript: ScriptSection[] = [
     ],
   },
   {
-    id: 'skin',
+    id: 'vital-signs',
     number: 3,
+    title: 'Vital Signs',
+    keyPhrases: [
+      'blood pressure',
+      'heart rate',
+      'respiratory rate',
+      'oxygen saturation',
+      'temperature',
+    ],
+    blocks: [
+      {
+        type: 'say',
+        content: 'I will now obtain and document vital signs.',
+      },
+      {
+        type: 'do',
+        content:
+          'Measure and document blood pressure, heart rate, respiratory rate, temperature, and oxygen saturation. Obtain height and weight if equipment available.',
+      },
+      {
+        type: 'say',
+        content:
+          'Blood pressure 118/76 mmHg, right arm, sitting. Heart rate 72 beats per minute, regular. Respiratory rate 14 breaths per minute, unlabored. Temperature 98.6 degrees Fahrenheit oral. Oxygen saturation 98% on room air. Height 5 feet 6 inches, weight 145 pounds. BMI approximately 23.4 — within normal limits.',
+      },
+      {
+        type: 'check',
+        content:
+          'All vitals documented. Note any abnormal values and state plan to recheck or report.',
+      },
+    ],
+  },
+  {
+    id: 'skin',
+    number: 4,
     title: 'Skin',
     blocks: [
       {
@@ -89,7 +124,7 @@ export const examScript: ScriptSection[] = [
   },
   {
     id: 'head-neck',
-    number: 4,
+    number: 5,
     title: 'Head and Neck',
     blocks: [
       {
@@ -139,7 +174,7 @@ export const examScript: ScriptSection[] = [
   },
   {
     id: 'eyes',
-    number: 5,
+    number: 6,
     title: 'Eyes',
     blocks: [
       {
@@ -167,7 +202,7 @@ export const examScript: ScriptSection[] = [
       {
         type: 'do',
         content:
-          'Confrontation visual fields — sit facing patient, close your own corresponding eye, hold fingers out in each of the 4 quadrants equidistant between you. Wiggle fingers, ask patient to say "now" when they see movement while keeping eyes on your nose.',
+          "Confrontation visual fields — sit facing patient, close your own corresponding eye, hold fingers out in each of the 4 quadrants equidistant between you. Wiggle fingers, ask patient to say 'now' when they see movement while keeping eyes on your nose.",
       },
       {
         type: 'say',
@@ -177,7 +212,7 @@ export const examScript: ScriptSection[] = [
       {
         type: 'do',
         content:
-          'Hold finger 12–18 inches from patient\'s face. Move slowly in H-pattern: left, left-up, left-down, right, right-up, right-down. Then center and test convergence. Watch for smooth tracking, nystagmus, lid lag.',
+          "Hold finger 12–18 inches from patient's face. Move slowly in H-pattern: left, left-up, left-down, right, right-up, right-down. Then center and test convergence. Watch for smooth tracking, nystagmus, lid lag.",
       },
       {
         type: 'say',
@@ -217,7 +252,7 @@ export const examScript: ScriptSection[] = [
   },
   {
     id: 'ears-nose',
-    number: 6,
+    number: 7,
     title: 'Ears, Nose, Sinuses, and Mouth',
     blocks: [
       {
@@ -242,7 +277,7 @@ export const examScript: ScriptSection[] = [
       {
         type: 'say',
         content:
-          "Otoscopic exam — right ear: tympanic membrane pearly gray, intact, light reflex present at 5 o'clock, bony landmarks visible — malleus clearly seen, no effusion or erythema. Left ear — tympanic membrane pearly gray, intact, light reflex at 5 o'clock, bony landmarks visible, no effusion.",
+          "Otoscopic exam — right ear: tympanic membrane pearly gray, intact, light reflex present at 5 o'clock, bony landmarks visible — malleus clearly seen, no effusion or erythema. Left ear — tympanic membrane pearly gray, intact, light reflex at 7 o'clock, bony landmarks visible, no effusion.",
       },
       {
         type: 'do',
@@ -266,7 +301,7 @@ export const examScript: ScriptSection[] = [
       {
         type: 'do',
         content:
-          'Use tongue depressor and penlight — inspect oral mucosa, teeth, tongue, hard and soft palate. Ask patient to say "ahh" — observe uvula and palate.',
+          "Use tongue depressor and penlight — inspect oral mucosa, teeth, tongue, hard and soft palate. Ask patient to say 'ahh' — observe uvula and palate.",
       },
       {
         type: 'say',
@@ -277,7 +312,7 @@ export const examScript: ScriptSection[] = [
   },
   {
     id: 'cranial-nerves',
-    number: 7,
+    number: 8,
     title: 'Cranial Nerves I–XII',
     blocks: [
       {
@@ -378,7 +413,7 @@ export const examScript: ScriptSection[] = [
       {
         type: 'do',
         content:
-          'Test trapezius: place hands on patient\'s shoulders, ask patient to shrug up against resistance. Test SCM: place hand on patient\'s jaw, ask patient to turn head against resistance — test each side.',
+          "Test trapezius: place hands on patient's shoulders, ask patient to shrug up against resistance. Test SCM: place hand on patient's jaw, ask patient to turn head against resistance — test each side.",
       },
       {
         type: 'say',
@@ -407,7 +442,7 @@ export const examScript: ScriptSection[] = [
   },
   {
     id: 'thorax-lungs',
-    number: 8,
+    number: 9,
     title: 'Thorax and Lungs',
     blocks: [
       {
@@ -467,7 +502,7 @@ export const examScript: ScriptSection[] = [
   },
   {
     id: 'cardiovascular',
-    number: 9,
+    number: 10,
     title: 'Cardiovascular',
     blocks: [
       {
@@ -521,13 +556,27 @@ export const examScript: ScriptSection[] = [
       {
         type: 'say',
         content:
-          'Jugular venous distension — not present at 30-degree elevation. Cardiovascular exam complete.',
+          'Jugular venous distension — not present at 30-degree elevation.',
+      },
+      {
+        type: 'say',
+        content: 'Peripheral vascular assessment.',
+      },
+      {
+        type: 'do',
+        content:
+          'Inspect lower extremities for edema, skin changes, hair loss, or ulceration. Palpate dorsalis pedis and posterior tibial pulses bilaterally.',
+      },
+      {
+        type: 'say',
+        content:
+          'Lower extremities — no edema, no skin breakdown, hair distribution normal. Dorsalis pedis pulses 2+ bilaterally. Posterior tibial pulses 2+ bilaterally. Capillary refill less than 2 seconds bilaterally. Cardiovascular exam complete.',
       },
     ],
   },
   {
     id: 'abdomen',
-    number: 10,
+    number: 11,
     title: 'Abdomen',
     blocks: [
       {
@@ -566,7 +615,7 @@ export const examScript: ScriptSection[] = [
       {
         type: 'do',
         content:
-          'Light palpation — all 4 quadrants, watch patient\'s face for grimacing. Then deep palpation — each quadrant. Palpate for liver edge at RCM. Palpate for spleen at LCM.',
+          "Light palpation — all 4 quadrants, watch patient's face for grimacing. Then deep palpation — each quadrant. Palpate for liver edge at RCM. Palpate for spleen at LCM.",
       },
       {
         type: 'say',
@@ -587,7 +636,7 @@ export const examScript: ScriptSection[] = [
   },
   {
     id: 'musculoskeletal',
-    number: 11,
+    number: 12,
     title: 'Musculoskeletal',
     blocks: [
       {
@@ -597,7 +646,7 @@ export const examScript: ScriptSection[] = [
       {
         type: 'do',
         content:
-          'Inspect all accessible joints systematically: hands, wrists, elbows, shoulders, hips, knees, ankles, feet. Look for swelling, erythema, deformity, atrophy.',
+          'Inspect and palpate all accessible joints systematically: hands, wrists, elbows, shoulders, hips, knees, ankles, feet. Look for swelling, erythema, deformity, atrophy.',
       },
       {
         type: 'say',
@@ -606,8 +655,7 @@ export const examScript: ScriptSection[] = [
       },
       {
         type: 'say',
-        content:
-          "Now spinal range of motion. Please touch your toes.",
+        content: "Now spinal range of motion. Please touch your toes.",
       },
       {
         type: 'do',
@@ -643,8 +691,16 @@ export const examScript: ScriptSection[] = [
   },
   {
     id: 'neurological',
-    number: 12,
+    number: 13,
     title: 'Neurological',
+    keyPhrases: [
+      'Romberg negative',
+      'finger-to-nose',
+      'rapid alternating',
+      'deep tendon reflexes',
+      '2+ bilaterally',
+      'gait steady',
+    ],
     blocks: [
       {
         type: 'say',
@@ -674,7 +730,7 @@ export const examScript: ScriptSection[] = [
       {
         type: 'do',
         content:
-          'Position sense — hold patient\'s great toe on sides (not top/bottom), move up or down with eyes closed. Ask patient which direction. Repeat other side.',
+          "Position sense — hold patient's great toe on sides (not top/bottom), move up or down with eyes closed. Ask patient which direction. Repeat other side.",
       },
       {
         type: 'say',
@@ -688,12 +744,12 @@ export const examScript: ScriptSection[] = [
       {
         type: 'do',
         content:
-          'Romberg — ask patient to stand with feet together, arms at sides. Patient is stable with eyes open. Now ask patient to close eyes. Stand close, ready to catch. Observe for 20–30 seconds.',
+          "Romberg — ask patient to stand with feet together, arms at sides. Patient is stable with eyes open. Now ask patient to close eyes. Stand close, ready to catch. Observe for 20–30 seconds.",
       },
       {
         type: 'say',
         content:
-          "Please stand with your feet together, arms at your sides. Good. Now close your eyes — I'll stand close for safety. Romberg — negative. No sway with eyes closed. Vestibular and proprioceptive function intact.",
+          "Please stand with your feet together, arms at your sides. Good. Now close your eyes — I'll stand close for safety. Romberg negative — no sway with eyes closed. Vestibular and proprioceptive function intact.",
       },
       {
         type: 'do',
@@ -736,14 +792,20 @@ export const examScript: ScriptSection[] = [
       {
         type: 'say',
         content:
-          'Gait — steady, smooth, coordinated, appropriate arm swing, no ataxia. Tandem gait intact — no difficulty with heel-to-toe walking. Neurological assessment complete.',
+          'Gait steady — smooth, coordinated, appropriate arm swing, no ataxia. Tandem gait intact — no difficulty with heel-to-toe walking. Neurological assessment complete.',
       },
     ],
   },
   {
     id: 'closing',
-    number: 13,
+    number: 14,
     title: 'Closing',
+    keyPhrases: [
+      'comprehensive',
+      'head-to-toe',
+      'all systems assessed',
+      'within normal limits',
+    ],
     blocks: [
       {
         type: 'do',
@@ -757,12 +819,12 @@ export const examScript: ScriptSection[] = [
       {
         type: 'say',
         content:
-          "Summary of findings — all 9 body systems assessed in head-to-toe order. All cranial nerves I through XII assessed individually by name and number. General examination unremarkable. All findings within normal limits for this patient.",
+          "Summary of findings — all systems assessed in head-to-toe order. All cranial nerves I through XII assessed individually by name and number. General examination unremarkable. All findings within normal limits for this patient.",
       },
       {
         type: 'check',
         content:
-          'Verify all systems covered: Skin, Head & Neck, Eyes, Ears/Nose/Sinuses/Mouth, Cranial Nerves, Thorax & Lungs, Cardiovascular, Abdomen, Musculoskeletal, Neurological. Equipment used: stethoscope, otoscope, ophthalmoscope, Snellen chart, reflex hammer, tuning forks, tape measure.',
+          'Verify all systems covered: General Survey, Vital Signs, Skin, Head & Neck, Eyes, Ears/Nose/Sinuses/Mouth, Cranial Nerves I–XII, Thorax & Lungs, Cardiovascular, Abdomen, Musculoskeletal, Neurological. Equipment used: stethoscope, otoscope, ophthalmoscope, Snellen chart, reflex hammer, tuning forks, tape measure.',
       },
     ],
   },

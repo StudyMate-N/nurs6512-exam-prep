@@ -7,22 +7,25 @@ import {
   BrainIcon,
   CheckSquareIcon,
   HeadphonesIcon,
+  ChartIcon,
 } from './Icons';
 
 interface NavItem {
   to: string;
   label: string;
+  mobileLabel: string;
   Icon: React.ComponentType<{ className?: string }>;
 }
 
 const navItems: NavItem[] = [
-  { to: '/', label: 'Dashboard', Icon: HomeIcon },
-  { to: '/orientation', label: 'Orientation', Icon: InfoIcon },
-  { to: '/blueprint', label: 'Blueprint', Icon: GridIcon },
-  { to: '/script', label: 'The Script', Icon: DocumentIcon },
-  { to: '/cranial-nerves', label: 'Cranial Nerves', Icon: BrainIcon },
-  { to: '/drills', label: 'Drill Protocol', Icon: CheckSquareIcon },
-  { to: '/audio', label: 'Audio Library', Icon: HeadphonesIcon },
+  { to: '/', label: 'Dashboard', mobileLabel: 'Home', Icon: HomeIcon },
+  { to: '/orientation', label: 'Orientation', mobileLabel: 'Orient', Icon: InfoIcon },
+  { to: '/blueprint', label: 'Blueprint', mobileLabel: 'Systems', Icon: GridIcon },
+  { to: '/script', label: 'The Script', mobileLabel: 'Script', Icon: DocumentIcon },
+  { to: '/cranial-nerves', label: 'Cranial Nerves', mobileLabel: 'CN Nerves', Icon: BrainIcon },
+  { to: '/drills', label: 'Drill Protocol', mobileLabel: 'Drills', Icon: CheckSquareIcon },
+  { to: '/audio', label: 'Audio Library', mobileLabel: 'Audio', Icon: HeadphonesIcon },
+  { to: '/analytics', label: 'Analytics', mobileLabel: 'Stats', Icon: ChartIcon },
 ];
 
 export function SidebarNav() {
@@ -52,21 +55,21 @@ export function SidebarNav() {
 export function BottomNav() {
   return (
     <nav className="fixed bottom-0 left-0 right-0 bg-[#0F172A] border-t border-white/10 z-50">
-      <div className="flex">
-        {navItems.map(({ to, label, Icon }) => (
+      <div className="flex overflow-x-auto">
+        {navItems.map(({ to, mobileLabel, Icon }) => (
           <NavLink
             key={to}
             to={to}
             end={to === '/'}
             className={({ isActive }) =>
-              `flex-1 flex flex-col items-center justify-center py-2 gap-0.5 transition-colors ${
+              `flex-1 min-w-[52px] flex flex-col items-center justify-center py-2 gap-0.5 transition-colors ${
                 isActive ? 'text-[#0F9E75]' : 'text-slate-500 hover:text-slate-300'
               }`
             }
           >
             <Icon className="w-5 h-5" />
-            <span className="text-[9px] font-medium leading-tight text-center">
-              {label.split(' ')[0]}
+            <span className="text-[9px] font-medium leading-tight text-center whitespace-nowrap">
+              {mobileLabel}
             </span>
           </NavLink>
         ))}

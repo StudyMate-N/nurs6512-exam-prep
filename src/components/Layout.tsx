@@ -9,6 +9,7 @@ const pageTitles: Record<string, string> = {
   '/cranial-nerves': 'Cranial Nerves',
   '/drills': 'Drill Protocol',
   '/audio': 'Audio Library',
+  '/analytics': 'Analytics',
 };
 
 function ExamCountdownBadge() {

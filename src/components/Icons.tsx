@@ -137,3 +137,31 @@ export function StarIcon({ className = 'w-5 h-5' }: IconProps) {
     </svg>
   );
 }
+
+export function ChartIcon({ className = 'w-5 h-5' }: IconProps) {
+  return (
+    <svg className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.8}>
+      <path strokeLinecap="round" strokeLinejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+    </svg>
+  );
+}
+
+export function SpeakerIcon({ className = 'w-4 h-4', filled = false }: IconProps & { filled?: boolean }) {
+  return filled ? (
+    <svg className={className} fill="currentColor" viewBox="0 0 24 24">
+      <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/>
+    </svg>
+  ) : (
+    <svg className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+      <path strokeLinecap="round" strokeLinejoin="round" d="M15.536 8.464a5 5 0 010 7.072M12 6v12m-3.536-9.536A5 5 0 008 12a5 5 0 00.464 2.536M8 9H5a1 1 0 00-1 1v4a1 1 0 001 1h3l4 4V5L8 9z" />
+    </svg>
+  );
+}
+
+export function MicIcon({ className = 'w-5 h-5' }: IconProps) {
+  return (
+    <svg className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.8}>
+      <path strokeLinecap="round" strokeLinejoin="round" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z" />
+    </svg>
+  );
+}

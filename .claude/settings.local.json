@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(cd /c/Users/G840/Desktop/nurs6512-exam-prep && npm run build 2>&1)",
+      "Bash(cd /c/Users/G840/Desktop/nurs6512-exam-prep && npm install recharts 2>&1 | tail -5)"
+    ]
+  }
+}

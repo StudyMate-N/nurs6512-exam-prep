@@ -21,6 +21,7 @@ const QUICK_LINKS = [
   { to: '/script', label: 'The Script', emoji: '📄' },
   { to: '/cranial-nerves', label: 'CN Nerves', emoji: '🧠' },
   { to: '/drills', label: 'Drills', emoji: '✅' },
+  { to: '/audio', label: 'Audio', emoji: '🎧' },
 ];
 
 function getPhase(dayNumber: number) {
@@ -164,7 +165,7 @@ export default function Dashboard() {
       {/* Quick access */}
       <div>
         <h2 className="font-bold text-slate-800 mb-3">Quick Access</h2>
-        <div className="grid grid-cols-5 gap-2">
+        <div className="grid grid-cols-3 sm:grid-cols-6 gap-2">
           {QUICK_LINKS.map((link) => (
             <Link
               key={link.to}

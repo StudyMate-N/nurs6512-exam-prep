@@ -1,7 +1,11 @@
+import { useState, useEffect } from 'react';
 import type { ScriptBlock as ScriptBlockData } from '../data/examScript';
+import { speak, stopSpeaking } from '../utils/tts';
+import { SpeakerIcon } from './Icons';
 
 interface ScriptBlockProps {
   block: ScriptBlockData;
+  speechRate?: number;
 }
 
 const blockConfig = {
@@ -28,8 +32,39 @@ const blockConfig = {
   },
 };
 
-export default function ScriptBlock({ block }: ScriptBlockProps) {
+export default function ScriptBlock({ block, speechRate = 1.0 }: ScriptBlockProps) {
   const config = blockConfig[block.type];
+  const [speaking, setSpeaking] = useState(false);
+
+  // Clean up if unmounted while speaking
+  useEffect(() => {
+    return () => {
+      if (speaking) stopSpeaking();
+    };
+  }, [speaking]);
+
+  const handleSpeak = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    if (speaking) {
+      stopSpeaking();
+      setSpeaking(false);
+    } else {
+      setSpeaking(true);
+      const utter = new SpeechSynthesisUtterance(block.content);
+      utter.rate = speechRate;
+      utter.pitch = 1.0;
+      const voices = window.speechSynthesis.getVoices();
+      const preferred =
+        voices.find((v) => v.name.includes('Google') && v.lang === 'en-US') ||
+        voices.find((v) => v.lang === 'en-US') ||
+        voices[0];
+      if (preferred) utter.voice = preferred;
+      utter.onend = () => setSpeaking(false);
+      utter.onerror = () => setSpeaking(false);
+      window.speechSynthesis.cancel();
+      window.speechSynthesis.speak(utter);
+    }
+  };
 
   return (
     <div
@@ -44,6 +79,20 @@ export default function ScriptBlock({ block }: ScriptBlockProps) {
           {block.content}
         </span>
       </div>
+      {block.type === 'say' && 'speechSynthesis' in window && (
+        <button
+          onClick={handleSpeak}
+          aria-label="Hear this line"
+          title="Hear this line"
+          className={`shrink-0 p-1.5 rounded-lg transition-colors mt-0.5 ${
+            speaking
+              ? 'bg-[#0F9E75] text-white'
+              : 'text-slate-400 hover:text-[#0F9E75] hover:bg-white/60'
+          }`}
+        >
+          <SpeakerIcon className="w-4 h-4" filled={speaking} />
+        </button>
+      )}
     </div>
   );
 }

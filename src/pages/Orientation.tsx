@@ -217,6 +217,97 @@ export default function Orientation() {
         </div>
       </AccordionCard>
 
+      {/* Video Exam Setup */}
+      <AccordionCard title="Video Exam Setup">
+        <div className="space-y-3">
+          {[
+            {
+              label: 'Camera',
+              content:
+                'Position your webcam or laptop camera so your FULL body from head to mid-thigh is visible. Faculty need to see you perform maneuvers.',
+            },
+            {
+              label: 'Lighting',
+              content:
+                'Face a window or light source. Avoid backlighting — if the light is behind you, faculty cannot see your face or technique.',
+            },
+            {
+              label: 'Background',
+              content:
+                'Clear, professional background. No visible clutter, personal items, or distractions.',
+            },
+            {
+              label: 'Space',
+              content:
+                'You need at least 6 feet of clear floor space to walk the patient, step back for general survey, and move around the examination table or chair.',
+            },
+            {
+              label: 'Audio',
+              content:
+                'Use a headset or confirm your microphone clearly picks up a speaking voice. Faculty must hear you verbalize every step.',
+            },
+            {
+              label: 'Internet',
+              content:
+                'Minimum 10 Mbps upload recommended. Close all other browser tabs and applications during the exam.',
+            },
+            {
+              label: 'Platform',
+              content:
+                'Confirm the video platform with faculty (Zoom, Teams, WebEx). Log in 10 minutes early to confirm audio/video.',
+            },
+            {
+              label: 'Test run',
+              content:
+                'Do at least one full rehearsal with your volunteer on video, recording yourself, before the actual exam.',
+            },
+          ].map((item) => (
+            <div key={item.label} className="flex gap-3 text-sm">
+              <span className="font-semibold text-slate-700 shrink-0 w-20">{item.label}:</span>
+              <span className="text-slate-600 leading-relaxed">{item.content}</span>
+            </div>
+          ))}
+        </div>
+      </AccordionCard>
+
+      {/* Volunteer patient guidance */}
+      <AccordionCard title="Your Volunteer Patient">
+        <div className="space-y-3">
+          {[
+            {
+              label: 'Age',
+              content:
+                'Choose an adult (18+) with no significant mobility limitations who can perform standing, walking, and positional changes.',
+            },
+            {
+              label: 'Brief them',
+              content:
+                'Tell them in advance you will be examining their eyes, ears, nose, throat, neck, chest, abdomen, arms, and legs, and testing their reflexes and coordination.',
+            },
+            {
+              label: 'What to wear',
+              content:
+                'Comfortable, loose clothing. Women should wear a two-piece outfit for easier chest and abdominal access.',
+            },
+            {
+              label: 'Release form',
+              content:
+                'Remind them the video release form must be signed before recording begins.',
+            },
+            {
+              label: 'What to tell them',
+              content:
+                '"I\'m going to narrate everything I do aloud. You don\'t need to perform — just respond to my instructions when I ask you to do something."',
+            },
+          ].map((item) => (
+            <div key={item.label} className="flex gap-3 text-sm">
+              <span className="font-semibold text-slate-700 shrink-0 w-24">{item.label}:</span>
+              <span className="text-slate-600 leading-relaxed italic">{item.content}</span>
+            </div>
+          ))}
+        </div>
+      </AccordionCard>
+
       {/* Mark complete */}
       <div className="pt-2">
         <button

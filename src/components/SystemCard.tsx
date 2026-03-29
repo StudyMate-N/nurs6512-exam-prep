@@ -14,7 +14,9 @@ export default function SystemCard({ system, reviewed, onToggleReviewed }: Syste
   return (
     <div
       className={`bg-white rounded-xl border transition-all duration-200 ${
-        reviewed ? 'border-[#0F9E75]' : 'border-[#E2E8F0]'
+        reviewed
+          ? 'border-l-4 border-l-green-500 border-[#E2E8F0]'
+          : 'border-[#E2E8F0]'
       }`}
     >
       <button
@@ -24,11 +26,11 @@ export default function SystemCard({ system, reviewed, onToggleReviewed }: Syste
       >
         <div className="flex items-center gap-3 min-w-0">
           <div
-            className={`w-8 h-8 rounded-lg flex items-center justify-center shrink-0 text-sm font-bold ${
-              reviewed ? 'bg-[#0F9E75] text-white' : 'bg-slate-100 text-slate-500'
+            className={`w-9 h-9 rounded-lg flex items-center justify-center shrink-0 text-xs font-bold relative ${
+              reviewed ? 'bg-green-500 text-white' : 'bg-slate-100 text-slate-600'
             }`}
           >
-            {reviewed ? <CheckIcon className="w-4 h-4" /> : system.name.charAt(0)}
+            {reviewed ? <CheckIcon className="w-4 h-4" /> : system.abbreviation}
           </div>
           <div>
             <h3 className="font-semibold text-slate-800 text-sm leading-tight">{system.name}</h3>
@@ -63,19 +65,32 @@ export default function SystemCard({ system, reviewed, onToggleReviewed }: Syste
             </div>
           )}
 
-          <button
-            onClick={(e) => {
-              e.stopPropagation();
-              onToggleReviewed();
-            }}
-            className={`w-full py-2 rounded-lg text-sm font-medium transition-colors ${
-              reviewed
-                ? 'bg-[#E6F7F2] text-[#0D7A5D] border border-[#0F9E75]'
-                : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
-            }`}
-          >
-            {reviewed ? '✓ Marked as Reviewed' : 'Mark as Reviewed'}
-          </button>
+          <div className="flex items-center gap-3">
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                onToggleReviewed();
+              }}
+              className={`flex-1 py-2 rounded-lg text-sm font-medium transition-colors ${
+                reviewed
+                  ? 'bg-green-50 text-green-700 border border-green-300'
+                  : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
+              }`}
+            >
+              {reviewed ? 'Reviewed ✓' : 'Mark as Reviewed'}
+            </button>
+            {reviewed && (
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  onToggleReviewed();
+                }}
+                className="text-xs text-slate-400 hover:text-slate-600 underline"
+              >
+                Unmark
+              </button>
+            )}
+          </div>
         </div>
       )}
     </div>

@@ -47,8 +47,67 @@
   .print-only {
     display: block !important;
   }
+
+  /* Hide chrome */
+  aside,
+  nav,
+  header,
+  footer,
+  button {
+    display: none !important;
+  }
+
   body {
-    background: white;
-    color: black;
+    background: white !important;
+    color: black !important;
+    font-size: 12pt;
+  }
+
+  .print-section {
+    page-break-inside: avoid;
+    margin-bottom: 1.5rem;
+  }
+
+  /* SAY blocks — thick solid left border */
+  .border-l-\[\#0F9E75\] {
+    border-left-width: 4px !important;
+    border-left-style: solid !important;
+    border-left-color: #000 !important;
+    background: #f9f9f9 !important;
+  }
+
+  /* DO blocks — dashed */
+  .border-l-amber-400 {
+    border-left-width: 2px !important;
+    border-left-style: dashed !important;
+    border-left-color: #555 !important;
+    background: #fff !important;
+  }
+
+  /* CHECK blocks — dotted */
+  .border-l-purple-400 {
+    border-left-width: 2px !important;
+    border-left-style: dotted !important;
+    border-left-color: #555 !important;
+    background: #fff !important;
+  }
+
+  /* Remove color backgrounds for print legibility */
+  [class*="bg-"] {
+    background: white !important;
+  }
+
+  [class*="text-white"] {
+    color: black !important;
+  }
+
+  a {
+    color: black !important;
+    text-decoration: none !important;
+  }
+
+  main {
+    padding: 0 !important;
+    max-width: 100% !important;
   }
 }
